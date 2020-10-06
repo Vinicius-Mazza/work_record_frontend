@@ -1,0 +1,3 @@
+module.exports = {
+    urlApi: 'http://localhost:3000' //ou um endereço web se tiver algum
+}
