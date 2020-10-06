@@ -1,7 +1,9 @@
 import Vue from 'vue'
+const { urlApi } = require('../.env')
+
 
 export const userKey = '__work_record_user'
-export const baseApiUrl = 'http://localhost:3000'
+export const baseApiUrl = urlApi
 
 export function showError(e) {
     if(e && e.response && e.response.data) {
