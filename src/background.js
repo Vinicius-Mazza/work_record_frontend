@@ -9,7 +9,7 @@ import { globalShortcut } from 'electron'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-
+app.allowRendererProcessReuse = true
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
@@ -20,7 +20,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1280,
     height: 720,
-    // icon: __dirname + '/assets/icon.png',
+    icon: __dirname + 'assets/icon.ico',
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -47,7 +47,7 @@ function createWindow() {
 
   win.webContents.on('did-finish-load', () => {
     const { title, version } = require('../package.json')
-    win.setTitle(`${title} :: ${version}`)
+    win.setTitle(`${title} : ${version}`)
   })
   
   win.webContents.on('devtools-opened', () => { win.webContents.closeDevTools(); })
