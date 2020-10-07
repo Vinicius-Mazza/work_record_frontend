@@ -4,7 +4,7 @@
       :main="category.name" sub="Categoria" />
 
     <div class="action-client">
-      <b-button variant="primary" @click="show=true">
+      <b-button pill variant="primary" @click="show=true">
         <i class="fa fa-plus"></i>
       </b-button>
     </div>
@@ -36,14 +36,14 @@
         <b-form-group label="Datas:" label-for="client-arrivalDate">
           <div class="row">
             <div class="col-md-6 col-xs-4">
-              <b-form-input id="client-arrivalDate"
-                v-model="client.arrivalDate" required
-                placeholder="Informe a data de chegada..." />
+              <b-form-datepicker hide-header v-model="client.arrivalDate" 
+                placeholder="Data de chegada..." 
+                class="mb-2"></b-form-datepicker>
             </div>
             <div class="col-md-6 col-xs-4">
-              <b-form-input id="client-departureDate"
-                v-model="client.departureDate" required
-                placeholder="Informe a data de saida..." />
+              <b-form-datepicker hide-header v-model="client.departureDate" 
+                placeholder="Data de saida..." 
+                class="mb-2"></b-form-datepicker>
             </div>
           </div>
         </b-form-group>
@@ -58,11 +58,14 @@
             v-model="client.stageStatus" required
             :options = " ['Etapa 1', 'Etapa 2', 'Etapa 3'] " />
         </b-form-group> 
-        <b-form-group 
+        <div>
+          <p>Categoria Pertencente: <strong>{{ category.name }}</strong></p>
+        </div>
+        <!-- <b-form-group 
           label="Categoria:" label-for="client-categoryId">
           <b-form-select id="client-categoryId"
             :options="categories" v-model="client.categoryId" />
-        </b-form-group>
+        </b-form-group> -->
         <b-form-group
           label="Observações" label-for="client-obs">
           <VueEditor v-model="client.obs"
@@ -115,7 +118,8 @@ export default {
       axios(url).then(res => this.category = res.data)
     },
     getClients() {
-      const url = `${baseApiUrl}/categories/${this.category.id}/clients?page=${this.page}`
+      const url = `${baseApiUrl}/categories/${this.category.id}
+        /clients?page=${this.page}`
       axios(url).then(res => {
         this.clients = this.clients.concat(res.data)
         this.page++

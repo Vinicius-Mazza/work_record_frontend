@@ -4,7 +4,7 @@
         main="Todos os clientes" />
 
       <div class="action-client">
-        <b-button variant="primary" @click="show=true">
+        <b-button pill variant="primary" @click="show=true">
           <i class="fa fa-plus"></i>
         </b-button>
       </div>
@@ -17,13 +17,15 @@
       >
         <b-form>
             <input id="client-id" type="hidden" v-model="client.id" />
-            <b-form-group label="Nome do Paciente:" label-for="client-pacientName">
+            <b-form-group label="Nome do Paciente:" 
+              label-for="client-pacientName">
               <b-form-input id="client-pacientName" type="text"
                 v-model="client.pacientName" required
                 :readonly="mode === 'remove'"
                 placeholder="Informe o nome do cliente..." />
             </b-form-group>
-            <b-form-group label="Dentista Responsavel:" label-for="client-dentist">
+            <b-form-group label="Dentista Responsavel:" 
+              label-for="client-dentist">
               <b-form-input id="client-dentist" type="text"
                 v-model="client.dentist" required
                 :readonly="mode === 'remove'"
@@ -38,16 +40,14 @@
             <b-form-group label="Datas:" label-for="client-arrivalDate">
               <div class="row">
                 <div class="col-md-6 col-xs-4">
-                  <b-form-input id="client-arrivalDate"
-                    v-model="client.arrivalDate" required
-                    :readonly="mode === 'remove'"
-                    placeholder="Informe a data de chegada..." />
+                  <b-form-datepicker hide-header v-model="client.arrivalDate" 
+                    placeholder="Data de chegada..." 
+                    class="mb-2"></b-form-datepicker>
                 </div>
                 <div class="col-md-6 col-xs-4">
-                  <b-form-input id="client-departureDate"
-                    v-model="client.departureDate" required
-                    :readonly="mode === 'remove'"
-                    placeholder="Informe a data de saida..." />
+                  <b-form-datepicker hide-header v-model="client.departureDate" 
+                    placeholder="Data de saida..." 
+                    class="mb-2"></b-form-datepicker>
                 </div>
               </div>
             </b-form-group>
@@ -79,13 +79,15 @@
             <b-button class="ml-2" @click="show=false">Cancelar</b-button>
         </b-form>
       </stack-modal>
-        <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
+      <b-pagination size="md" v-model="page" :total-rows="count" 
+        :per-page="limit" />
         <ul>
           <li v-for="client in clients" :key="client.id">
             <ClientItem :client="client" />
           </li>
         </ul>
-        <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
+      <b-pagination size="md" v-model="page" :total-rows="count" 
+        :per-page="limit" />
     </div>
 </template>
 
