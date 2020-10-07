@@ -12,8 +12,8 @@
         <Stat title="Clientes" :value="stat.clients"
           icon="fa fa-file" color="#3bc480" />
       </router-link>
-      <Stat title="Usuários" :value="stat.users"
-        icon="fa fa-user" color="#3282cd" />
+      <!-- <Stat title="Usuários" :value="stat.users"
+        icon="fa fa-user" color="#3282cd" /> -->
     </div>
   </div>
 </template>

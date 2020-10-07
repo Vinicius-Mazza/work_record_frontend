@@ -11,9 +11,9 @@
                     <b-tab title="Categorias">
                         <CategoryAdmin />
                     </b-tab>
-                    <b-tab title="Usuários">
+                    <!-- <b-tab title="Usuários">
                         <UserAdmin />
-                    </b-tab>
+                    </b-tab> -->
                 </b-tabs>
             </b-card>
         </div>
@@ -24,10 +24,10 @@
 import PageTitle from '../template/PageTitle'
 import CategoryAdmin from './CategoryAdmin'
 // import ClientAdmin from './ClientAdmin'
-import UserAdmin from './UserAdmin'
+// import UserAdmin from './UserAdmin'
 export default {
     name: 'AdminPages',
-    components: { PageTitle, CategoryAdmin, UserAdmin }
+    components: { PageTitle, CategoryAdmin }
 }
 </script>
 
